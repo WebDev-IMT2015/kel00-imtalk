@@ -6,6 +6,8 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateUsersTable extends Migration
 {
+    private $primaryKey = 'id_user';
+
     /**
      * Run the migrations.
      *
@@ -14,7 +16,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id_user');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
