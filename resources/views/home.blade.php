@@ -13,7 +13,7 @@
                         <li>Posts: 123</li>
                         <li>Likes Get: 123</li>
                         <li>Likes Given: 123</li>
-                        <li><strong>Join Date</strong> {{ date('H:i:s d/m/y', strtotime(Auth::user()->created_at)) }}</li>
+                        <li><strong>Registered</strong> {{ date('H:i:s d/m/y', strtotime(Auth::user()->created_at)) }}</li>
                         <li><strong>Last Login</strong> {{ date('H:i:s d/m/y', strtotime(Auth::user()->last_login)) }}</li>
                     </ul>
                 </div>
@@ -27,26 +27,26 @@
                         <thead>
                             <tr>
                                 <th>Title</th>
-                                <th>Views</th>
                                 <th>Replies</th>
-                                <th>Last Reply</th>
+                                <th>Views</th>
+                                <th>Last Post</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th>1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br>by A</td>
+                                <td>1,000</td>
+                                <td>15,000</td>
+                                <td>19:28:45 18/06/17<br>by Anton</td>
                             </tr>
                             <tr>
-                                <th>2</th>
+                                <td>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</td>
                                 <td>Jacob</td>
                                 <td>Thornton</td>
                                 <td>@fat</td>
                             </tr>
                             <tr>
-                                <th>3</th>
+                                <td>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</td>
                                 <td>Larry</td>
                                 <td>the Bird</td>
                                 <td>@twitter</td>
