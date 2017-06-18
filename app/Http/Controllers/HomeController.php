@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::where('reply_to', null)->get();
         return view('home')->with('posts', $posts);
     }
 }
