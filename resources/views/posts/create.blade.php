@@ -3,7 +3,7 @@
 @section('title', 'Create')
 
 @section('styles')
-<link href="//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css" rel="stylesheet">
+<link href="//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
 @endsection
 
 @section('content')
