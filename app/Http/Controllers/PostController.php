@@ -18,7 +18,7 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $id_post = null)
     {
         $this->validate($request, [
             'subject'            => 'required',
@@ -32,12 +32,37 @@ class PostController extends Controller
         $post->last_reply = $request->user()->id_user;
         $post->save();
 
-        return redirect()->route('home')->with('status', 'Pengiriman Email Blast berhasil!');
+        $redirect = $post->id_post;
+        $status = "Thread created!";
+
+        if (!is_null($id_post)) {
+            $post->reply_to = $id_post;
+            $post->save();
+
+            $thread = Post::find($id_post);
+            $thread->last_reply = $request->user()->id_user;
+            $thread->increment('reply_count');
+            $thread->save();
+
+            $redirect = $id_post;
+            $status = "Thread replied succesfully!";
+        }
+
+        return redirect()->route('post.show', $redirect)->with('status', $status);
     }
 
     public function show(Request $request, $id_post)
     {
         $post = Post::find($id_post);
-        return view('posts.show')->with('post', $post);
+        if (is_null($post)) {
+            return abort(404);
+        }
+
+        if (is_null($post->reply_to)) {
+            $replies = Post::where('reply_to', $id_post)->get();
+            return view('posts.show')->with('post', $post)->with('replies', $replies);
+        } else {
+            return redirect('/');
+        }
     }
 }
