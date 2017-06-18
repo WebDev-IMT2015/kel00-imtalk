@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        @include('layouts.status')
+        @include('layouts.widget')
         <div class="col-md-9">
             <div class="panel panel-default">
                 <div class="panel-heading" style="padding-bottom: 20px">Threads <span class="pull-right"><a href="{{ route('post.create') }}" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>&nbsp;&nbsp;New Thread</a></span></div>
