@@ -21,12 +21,12 @@
         </div>
         <div class="col-md-9">
             <div class="panel panel-default">
-                <div class="panel-heading" style="padding-bottom: 20px">Topics <span class="pull-right"><button class="btn btn-sm btn-success"><i class="fa fa-plus"></i>&nbsp;&nbsp;New Topic</button></span></div>
+                <div class="panel-heading" style="padding-bottom: 20px">Threads <span class="pull-right"><a href="{{ route('post.create') }}" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>&nbsp;&nbsp;New Thread</a></span></div>
                 <div class="panel-body">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Title</th>
+                                <th>Subject</th>
                                 <th>Replies</th>
                                 <th>Views</th>
                                 <th>Last Post</th>
