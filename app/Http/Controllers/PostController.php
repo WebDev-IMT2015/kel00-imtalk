@@ -34,4 +34,10 @@ class PostController extends Controller
 
         return redirect()->route('home')->with('status', 'Pengiriman Email Blast berhasil!');
     }
+
+    public function show(Request $request, $id_post)
+    {
+        $post = Post::find($id_post);
+        return view('posts.show')->with('post', $post);
+    }
 }
