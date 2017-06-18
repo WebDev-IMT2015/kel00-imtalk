@@ -14,3 +14,8 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::post('post/{id}/reply', 'PostController@store')->name('post.reply');
+    Route::resource('post', 'PostController');
+});

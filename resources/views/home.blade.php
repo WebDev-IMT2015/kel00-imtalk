@@ -1,54 +1,34 @@
 @extends('layouts.app')
 
+@section('title', 'Home')
+
 @section('content')
 <div class="container">
+    @include('layouts.status')
     <div class="row">
-        <div class="col-md-3">
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ Auth::user()->name }}</div>
-                <div class="panel-body">
-                    <ul style="padding-left: 20px">
-                        <li>Posts: 123</li>
-                        <li>Likes Get: 123</li>
-                        <li>Likes Given: 123</li>
-                        <li><strong>Join Date</strong> {{ date('H:i:s d/m/y', strtotime(Auth::user()->created_at)) }}</li>
-                        <li><strong>Last Login</strong> {{ date('H:i:s d/m/y', strtotime(Auth::user()->last_login)) }}</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        @include('layouts.widget')
         <div class="col-md-9">
             <div class="panel panel-default">
-                <div class="panel-heading" style="padding-bottom: 20px">Topics <span class="pull-right"><button class="btn btn-sm btn-success"><i class="fa fa-plus"></i>&nbsp;&nbsp;New Topic</button></span></div>
+                <div class="panel-heading" style="padding-bottom: 20px">Threads <span class="pull-right"><a href="{{ route('post.create') }}" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>&nbsp;&nbsp;New Thread</a></span></div>
                 <div class="panel-body">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Title</th>
-                                <th>Views</th>
+                                <th>Subject</th>
                                 <th>Replies</th>
-                                <th>Last Reply</th>
+                                <th>Views</th>
+                                <th>Last Post</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($posts as $post)
                             <tr>
-                                <th>1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                <td><a href="{{ route('post.show', $post->id_post) }}">{{ $post->subject }}</a><br>by {{ App\Models\User::find($post->id_user)->name }}</td>
+                                <td>{{ $post->reply_count }}</td>
+                                <td>{{ $post->view_count }}</td>
+                                <td>{{ date('H:i:s d/m/Y', strtotime($post->updated_at)) }}<br>by {{ App\Models\User::find($post->last_reply)->name }}</td>
                             </tr>
-                            <tr>
-                                <th>2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th>3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
