@@ -59,6 +59,7 @@ class PostController extends Controller
         }
 
         if (is_null($post->reply_to)) {
+            $post->increment('view_count');
             $replies = Post::where('reply_to', $id_post)->get();
             return view('posts.show')->with('post', $post)->with('replies', $replies);
         } else {
