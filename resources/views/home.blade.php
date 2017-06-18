@@ -4,6 +4,7 @@
 
 @section('content')
 <div class="container">
+    @include('layouts.status')
     <div class="row">
         @include('layouts.widget')
         <div class="col-md-9">
