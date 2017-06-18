@@ -20,24 +20,14 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($posts as $post)
                             <tr>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br>by A</td>
-                                <td>1,000</td>
-                                <td>15,000</td>
-                                <td>19:28:45 18/06/17<br>by Anton</td>
+                                <td><a href="{{ route('post.show', $post->id_post) }}">{{ $post->subject }}</a><br>by {{ App\Models\User::find($post->id_user)->name }}</td>
+                                <td>{{ $post->reply_count }}</td>
+                                <td>{{ $post->view_count }}</td>
+                                <td>{{ date('H:i:s d/m/Y', strtotime($post->updated_at)) }}<br>by {{ App\Models\User::find($post->last_reply)->name }}</td>
                             </tr>
-                            <tr>
-                                <td>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</td>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <td>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</td>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
